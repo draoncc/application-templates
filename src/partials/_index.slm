@@ -1,0 +1,13 @@
+main.page
+  aside
+    == mixin('aside_header')
+    == mixin('aside_contact')
+
+  article
+    header
+      h1 Anlagenverzeichnis
+    nav
+      ol
+        li Lebenslauf
+        li Kurzprofil
+        li Zeugnisse

@@ -1,0 +1,12 @@
+main.page
+  aside
+    == mixin('aside_header')
+    == mixin('aside_recipient')
+    == mixin('aside_contact')
+
+  article.application-letter
+    == mixin('date')
+
+    == partial('text_application')
+
+    == mixin('closing')

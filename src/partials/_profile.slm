@@ -1,0 +1,29 @@
+main.page
+  aside
+    == mixin('aside_header')
+    == mixin('aside_contact')
+
+  article
+    header
+      h1 Kurzprofil
+
+    h4 Was mich auszeichnet
+    p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+    ul.bulletlist
+      | Meine Stärken:
+      li Sed ut perspiciatis unde omnis iste natus error 
+      li Sit voluptatem accusantium doloremque laudantium
+      li ...
+
+    ul.bulletlist
+      | Meine Erfahrungen:
+      li Sed quia consequuntur magni dolores eos qui ratione voluptatem
+      li ... 
+
+    h4 Arbeitsproben
+    p Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+    p Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+
+    == mixin('date')
+    == mixin('closing')

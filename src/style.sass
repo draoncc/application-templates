@@ -1,0 +1,255 @@
+// Constant Definitions
+// ====================
+// Page dimensions (A4)
+$paperwidth: 794px
+$paperheight: 1122px
+
+// Font
+$font-size-s: 10pt
+$font-size-m: 11pt
+$font-size-l: 14pt
+$font-size-xl: 18pt
+$font-primary: "Roboto"
+$font-secondary: "Roboto Condensed"
+
+$icon-size-m: 32px
+$icon-size-l: 48px
+
+// Colors
+$aside-ratio: 38.2%
+$color-background-primary: #fff
+$color-background-secondary: #e6e7e9
+$color-primary: #00b6f7
+$color-text: hsl(0,0%,13%)
+
+// Mixins
+@mixin word-wrap()
+  overflow-wrap: break-word
+  word-wrap: break-word
+  word-break: break-word
+  hyphens: auto
+
+@mixin strikethrough($foreground, $background)
+  position: relative
+
+  &:after
+    content: ""
+    position: absolute
+    z-index: 0
+    left: 0
+    right: 0
+    top: 50%
+    transform: translateY(-50%)
+    border-top: 1pt solid $color-text
+
+  >*
+    position: relative
+    z-index: 1
+    font-family: $font-secondary
+    display: inline
+    color: $foreground
+    background: $background
+
+// Resets
+// ======
+ul, ol
+  list-style: none
+  margin-left: 0
+  padding-left: 0
+  text-align: left
+
+p
+  margin: 0
+  margin-bottom: 1.6rem
+
+// Primary
+// =======
+// Box sizing fix
+*, *:before, *:after
+  box-sizing: border-box
+
+html
+  font-family: $font-primary
+  font-size: $font-size-m
+  color: $color-text
+  background: $color-background-primary
+  @include word-wrap()
+
+// Building blocks
+.page
+  width: $paperwidth
+  height: $paperheight
+
+.icon
+  display: inline-block
+  position: relative
+
+  vertical-align: middle
+
+  width: $icon-size-m
+  height: $icon-size-m
+
+  background: $color-primary
+  border-radius: 100%
+
+  >svg
+    position: absolute
+    top: 25%
+    left: 25%
+
+    width: 50%
+    height: 50%
+
+    color: $color-background-primary
+    fill: currentColor
+
+h1>.icon
+  width: $icon-size-l
+  height: $icon-size-l
+
+.bulletlist
+  list-style: disc outside
+  li
+    margin-left: 2rem
+
+.rightalign
+  text-align: right
+
+.col
+  float: left
+.col_50
+  width: 50%
+.col_33
+  width: 33%
+.col_66
+  width: 66%
+
+section.col:not(:last-child)
+  padding-right: 1.2rem
+
+.clear
+  clear: both
+
+// Custom
+// ======
+// Sidebar design
+aside
+  float: left
+  font-size: $font-size-s
+  text-align: center
+  width: $aside-ratio
+  height: 100%
+  padding: 2rem
+  background: $color-background-secondary
+
+  //required for absolute positioning of .contact element
+  position: relative
+
+  img
+    padding: 12%
+    width: 100%
+    border-radius: 100%
+
+  h1
+    text-transform: uppercase
+    font-family: $font-secondary
+    font-size: $font-size-l
+  h2
+    font-weight: normal
+    font-size: $font-size-l
+
+  header
+    @include strikethrough($color-text, $color-background-secondary)
+    margin-top: 4rem
+    margin-bottom: 2rem
+    h1
+      padding: 0 1rem
+
+  .name
+    font-size: $font-size-xl
+
+  .contact
+    padding: 2rem
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+
+    ul
+      li
+        margin-bottom: 0.8rem
+        display: flex
+        flex-wrap: nowrap
+        align-items: center
+        .icon
+          margin-right: 1rem
+
+// Page design
+article
+  float: left
+  padding: 2rem
+  width: 100% - $aside-ratio
+
+  header
+    @include strikethrough($color-primary, $color-background-primary)
+    margin-top: 6rem
+    margin-bottom: 6rem
+    h1
+      margin: 0
+      padding-right: 1rem
+
+  nav
+    ol
+      width: 100%
+      position: relative
+      white-space: nowrap
+      overflow: hidden
+      counter-reset: my-counter
+      li
+        margin-bottom: 3rem
+        
+        &:after
+          position: relative
+          z-index: 0
+          content: " ......................................................................................................... "
+        
+        &:before
+          position: absolute
+          z-index: 1
+          right: 0
+
+          content: counter(my-counter)
+          counter-increment: my-counter
+
+          background: $color-background-primary
+          padding-left: 0.4rem
+
+  section
+    margin-bottom: 1.6rem
+    line-height: 1.6rem
+    h3
+      font-family: $font-secondary
+      font-size: $font-size-l
+      margin: 0
+      padding: 0
+    h4
+      color: $color-primary
+      margin: 0
+      padding: 0
+    ul
+      margin: 0
+      padding: 0
+
+// Individual page overrides
+// =========================
+.cv
+  header
+    margin-top: 2rem
+    margin-bottom: 2rem
+
+  .bulletlist
+    li
+      margin-bottom: 1.2rem
+
+.application-letter
+  margin-top: 6rem

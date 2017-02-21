@@ -1,0 +1,35 @@
+{
+  "name": "application-templates",
+  "description": "Collection of application templates expressing creaivity and elegance.",
+  "author": "draoncc",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "html-pdf": "^2.1.0",
+    "livereloadx": "^0.3.9",
+    "node-sass": "^4.5.0",
+    "parallelshell": "^2.0.0",
+    "slm": "^0.6.0",
+    "slm-markdown": "^1.0.0",
+    "watch": "^1.0.1"
+  },
+  "scripts": {
+    "env": "env",
+    "clean": "rm -r public/*",
+    "compile-lib": "coffee --compile --bare --no-header --output lib lib/**.coffee && chmod +x lib/*.js",
+
+    "build:assets": "cp -r src/assets/* public",
+    "build:css": "node-sass --output-style nested -r src -o public",
+    "build:html": "lib/slm.js src/index.slm public/index.html",
+    "build:pdf": "lib/html-pdf.js public/index.html public/index.pdf && pdftk public/index.pdf public/attachments/*.pdf cat output public/application.pdf",
+    "build": "parallelshell 'npm run build:assets' 'npm run build:css' 'npm run build:html' && npm run build:pdf",
+
+    "watch:build": "parallelshell 'npm run watch:build:assets' 'npm run watch:buildp",
+    "watch:serve": "livereloadx -s -p 8080 public",
+    "watch": "parallelshell 'npm run watch:build' 'npm run watch:serve'"
+  }
+}

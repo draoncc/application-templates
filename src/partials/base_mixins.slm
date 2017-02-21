@@ -1,0 +1,80 @@
+- var recipient = { \
+  name: "Musterfirma",
+  street: "Firmastraße 16",
+  postcode: "12345",
+  city: "Firmastadt"}
+
+- var data = { \
+  name: "Max Mustermann",
+  street: "Musterstraße 42",
+  postcode: "54321",
+  city: "Musterstadt",
+  phone: "+49 123 456789",
+  email: "max.mustermann@gmail.com",
+  birthdate: "01. Januar 1990",
+  birthplace: "Mustergeburtsort",
+  citizenship: "deutsch",
+  civil_status: "ledig"}
+
+= mixin('aside_contact')
+  section.contact
+    header
+      h1 Kontakt
+    ul
+      li
+        span
+          div.icon
+            svg
+              use xlink:href="#icon-location"
+        span ${=data.street}, ${=data.postcode} ${=data.city}
+      li
+        span
+          div.icon
+            svg
+              use xlink:href="#icon-phone"
+        span ${=data.phone}
+      li
+        span
+          div.icon
+            svg
+              use xlink:href="#icon-mail"
+        span ${=data.email}
+
+= mixin('aside_header')
+  h1.name ${=data.name}
+  h2.occupation Musterberuf
+
+= mixin('closing')
+  div Mit freundlichen Grüßen,
+  img src='signature.jpg'
+  div ${=data.name}
+
+= mixin('date')
+  div.rightalign
+    | ${=data.city}, 
+    = String(new Date().getDate()) + "." + String(new Date().getMonth() + 1) + "." + String(new Date().getFullYear())
+
+= mixin('aside_recipient')
+  section
+    header
+      h1 Empfänger
+    p ${=recipient.name}
+    p ${=recipient.street}
+    p ${=recipient.postcode}, ${=recipient.city}
+
+= mixin('aside_sender')
+  section
+    header
+      h1 Absender
+    p ${=data.name}
+    p ${=data.street}
+    p ${=data.postcode}, ${=data.city}
+
+= mixin('aside_personal')
+  section
+    header
+      h1 Persönliches
+    p Geboren am ${=data.birthdate}<br>in ${=data.birthplace}
+    p Staatsangehörigkeit: ${=data.citizenship}
+    p Familienstand: ${=data.civil_status}
+

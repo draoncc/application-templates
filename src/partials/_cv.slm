@@ -1,0 +1,64 @@
+main.page
+  aside
+    img src='profile.jpg' 
+
+    == mixin('aside_header')
+    == mixin('aside_personal')
+    == mixin('aside_contact')
+
+  article.cv
+    header
+      h1
+        div.icon
+          svg
+            use xlink:href="#icon-school"
+      h1 Bildungsweg
+
+    section
+      div.col.col_33
+        h3 Unistadt
+        div seit 10/2015
+      div.col.col_66
+        h3 University of Applied Sciences
+        h4 Bachelor des Musterfachbereiches
+      p.clear Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+    header
+      h1
+        div.icon
+          svg
+            use xlink:href="#icon-stat-bars"
+      h1 Kenntnisse
+
+    section.col.col_50
+      h3 Mustertätigkeit
+      ul.col.col_50
+        li Fähigkeit 1
+        li Fähigkeit 2
+        li ...
+      ul.col.col_50.rightalign
+        li ganz gut
+        li geht so
+        li ...
+
+    section.col.col_50
+      h3 Sprachen
+      ul.col.col_50
+        li Deutsch
+        li Englisch
+      ul.col.col_50.rightalign
+        li nativ
+        li fließend
+    div.clear
+
+    header
+      h1
+        div.icon
+          svg
+            use xlink:href="#icon-star"
+      h1 Interessen & Engagement
+
+    ul.bulletlist
+      li Lorem ipsum dolor sit amet
+      li Consectetur adipiscing elit
+
